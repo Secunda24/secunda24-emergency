@@ -1,58 +1,51 @@
-<!--
-Prototype includes: a public landing page, an interactive mobile app demo, and a dispatcher / partner dashboard prototype for Secunda24 Emergency.
-Run with: npm install && npm run dev
-Routes: / (landing page), /demo/app (mobile app prototype), /demo/dashboard (dispatcher dashboard)
--->
+# which
 
-# Secunda24 Emergency
+Like the unix `which` utility.
 
-Secunda24 Emergency is a polished front-end demo prototype for verified emergency reporting in Secunda. The experience is designed for partner walkthroughs with local security companies, medical responders, and Secunda24 admin stakeholders. It uses seeded local mock data only and does not include a backend.
+Finds the first instance of a specified executable in the PATH
+environment variable.  Does not cache the results, so `hash -r` is not
+needed when the PATH changes.
 
-## Stack
+## USAGE
 
-- Next.js 14 App Router
-- React + TypeScript
-- Tailwind CSS
-- shadcn/ui component primitives
-- Lucide React
-- Framer Motion
+```javascript
+const which = require('which')
 
-## Included in the prototype
+// async usage
+// rejects if not found
+const resolved = await which('node')
 
-- Public landing page with hero, product story, partner pitch, demo screen overview, and early access form
-- Interactive mobile app prototype with onboarding, verification, alert selection, location picker, short summary, confirmation, and recent alerts history
-- Dispatcher / partner dashboard with incident stats, live feed, partner routing panel, coverage map placeholder, and audit/compliance detail flow
-- Seeded Secunda-area mock incidents, partners, coverage zones, and recent alerts
+// if nothrow option is used, returns null if not found
+const resolvedOrNull = await which('node', { nothrow: true })
 
-## Run locally
+// sync usage
+// throws if not found
+const resolved = which.sync('node')
 
-1. Install dependencies:
+// if nothrow option is used, returns null if not found
+const resolvedOrNull = which.sync('node', { nothrow: true })
 
-```bash
-npm install
+// Pass options to override the PATH and PATHEXT environment vars.
+await which('node', { path: someOtherPath, pathExt: somePathExt })
 ```
 
-2. Start the development server:
+## CLI USAGE
 
-```bash
-npm run dev
+Just like the BSD `which(1)` binary but using `node-which`.
+
+```
+usage: node-which [-as] program ...
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000)
+You can learn more about why the binary is `node-which` and not `which`
+[here](https://github.com/npm/node-which/pull/67)
 
-## Main routes
+## OPTIONS
 
-- `/` -> Landing page
-- `/demo/app` -> Mobile app prototype
-- `/demo/dashboard` -> Dispatcher / partner dashboard prototype
+You may pass an options object as the second argument.
 
-## Deployment
-
-- GitHub + Render setup guide: `DEPLOY_RENDER.md`
-- Render blueprint file: `render.yaml`
-
-## Notes
-
-- This is a front-end only working prototype for demos, not a production dispatch system.
-- Reports route to the mock dispatcher / partner dashboard workflow and do not connect to SAPS.
-- Identity, timestamp, GPS location, and device/IP metadata are shown as accountability signals using local mock state.
+- `path`: Use instead of the `PATH` environment variable.
+- `pathExt`: Use instead of the `PATHEXT` environment variable.
+- `all`: Return all matches, instead of just the first one.  Note that
+  this means the function returns an array of strings instead of a
+  single string.

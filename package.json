@@ -1,60 +1,57 @@
 {
-  "name": "secunda24-emergency",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Front-end prototype for Secunda24 Emergency built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.",
-  "engines": {
-    "node": "20.x"
+  "author": "GitHub Inc.",
+  "name": "which",
+  "description": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+  "version": "4.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/node-which.git"
   },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "seed:demo": "tsx scripts/seed-demo.ts"
+  "main": "lib/index.js",
+  "bin": {
+    "node-which": "./bin/which.js"
   },
+  "license": "ISC",
   "dependencies": {
-    "@hookform/resolvers": "^3.9.0",
-    "@radix-ui/react-alert-dialog": "^1.1.2",
-    "@radix-ui/react-avatar": "^1.1.1",
-    "@radix-ui/react-dialog": "^1.1.2",
-    "@radix-ui/react-dropdown-menu": "^2.1.2",
-    "@radix-ui/react-label": "^2.1.0",
-    "@radix-ui/react-scroll-area": "^1.2.0",
-    "@radix-ui/react-select": "^2.1.2",
-    "@radix-ui/react-separator": "^1.1.0",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-tabs": "^1.1.1",
-    "@supabase/ssr": "^0.5.2",
-    "@supabase/supabase-js": "^2.45.4",
-    "@tanstack/react-table": "^8.20.5",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "dotenv": "^16.4.7",
-    "framer-motion": "^11.11.17",
-    "lucide-react": "^0.454.0",
-    "next": "^14.2.18",
-    "next-themes": "^0.4.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.1",
-    "recharts": "^2.13.0",
-    "sonner": "^1.7.1",
-    "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "isexe": "^3.1.1"
   },
   "devDependencies": {
-    "@types/node": "^22.9.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.18",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14",
-    "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "@npmcli/eslint-config": "^4.0.0",
+    "@npmcli/template-oss": "4.18.0",
+    "tap": "^16.3.0"
+  },
+  "scripts": {
+    "test": "tap",
+    "lint": "eslint \"**/*.js\"",
+    "postlint": "template-oss-check",
+    "template-oss-apply": "template-oss-apply --force",
+    "lintfix": "npm run lint -- --fix",
+    "snap": "tap",
+    "posttest": "npm run lint"
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "tap": {
+    "check-coverage": true,
+    "nyc-arg": [
+      "--exclude",
+      "tap-snapshots/**"
+    ]
+  },
+  "engines": {
+    "node": "^16.13.0 || >=18.0.0"
+  },
+  "templateOSS": {
+    "//@npmcli/template-oss": "This file is partially managed by @npmcli/template-oss. Edits may be overwritten.",
+    "ciVersions": [
+      "16.13.0",
+      "16.x",
+      "18.0.0",
+      "18.x"
+    ],
+    "version": "4.18.0",
+    "publish": "true"
   }
 }
