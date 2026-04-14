@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 220 30% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 14%;
+    --primary: var(--brand);
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 26% 95%;
+    --secondary-foreground: 220 20% 28%;
+    --muted: 214 30% 95%;
+    --muted-foreground: 220 11% 44%;
+    --accent: 209 100% 96%;
+    --accent-foreground: 208 100% 28%;
+    --destructive: 0 78% 58%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 24% 89%;
+    --input: 214 24% 89%;
+    --ring: var(--brand);
+    --brand: 210 88% 52%;
+    --brand-soft: 209 100% 95%;
+    --brand-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 218 29% 10%;
+    --foreground: 40 30% 96%;
+    --card: 220 29% 12%;
+    --card-foreground: 40 30% 96%;
+    --popover: 220 29% 12%;
+    --popover-foreground: 40 30% 96%;
+    --secondary: 221 19% 18%;
+    --secondary-foreground: 40 30% 96%;
+    --muted: 220 18% 18%;
+    --muted-foreground: 214 13% 72%;
+    --accent: 175 28% 18%;
+    --accent-foreground: 173 68% 82%;
+    --destructive: 0 63% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 17% 22%;
+    --input: 220 17% 22%;
+    --ring: var(--brand);
+    --brand-soft: 176 34% 16%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
+      radial-gradient(circle at top right, rgba(239, 68, 68, 0.1), transparent 24%),
+      linear-gradient(180deg, rgba(250, 252, 255, 0.98), rgba(240, 244, 255, 0.96));
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 20%),
+      linear-gradient(180deg, rgba(10, 15, 28, 0.96), rgba(8, 12, 22, 0.98));
+  }
+}
+
+@layer components {
+  .surface {
+    @apply border border-white/40 bg-white/80 shadow-soft backdrop-blur-xl dark:border-white/5 dark:bg-slate-900/80;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center rounded-full border border-brand/15 bg-brand-soft px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-brand;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl;
+  }
+}
