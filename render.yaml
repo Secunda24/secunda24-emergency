@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: secunda24-emergency
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20.20.2
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: NEXT_PUBLIC_PORTAL_NAME
+        value: Secunda24 Emergency
+      - key: NEXT_PUBLIC_COMPANY_NAME
+        value: Secunda24
+      - key: NEXT_PUBLIC_LOGO_PLACEHOLDER
+        value: S24
+      - key: NEXT_PUBLIC_ACCENT_HSL
+        value: 210 88% 52%
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://secunda24-emergency.onrender.com
